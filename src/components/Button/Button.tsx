@@ -31,14 +31,12 @@ export const Button = ({
   label,
 }: ButtonProps) => {
   const mode = primary
-    ? "bg-green-100 text-green-800"
-    : "bg-white ring-1 ring-gray-400 text-gray-600";
+    ? "text-green-800 bg-green-100 border border-transparent active:bg-green-300 hover:bg-green-200 focus:shadow-outline-purple"
+    : "text-gray-600 border-gray-300 border dark:text-gray-400 focus:outline-none active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:shadow-outline-gray";
   return (
     <button
       type="button"
-      className={["p-3","px-4", "rounded-lg","font-semibold", "text-sm", mode].join(
-        " "
-      )}
+      className={'px-4 py-2 rounded-lg text-sm align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none '+mode}
       onClick={onClick}
     >
       {label}
