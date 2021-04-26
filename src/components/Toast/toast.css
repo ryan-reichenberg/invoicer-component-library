@@ -1,6 +1,6 @@
 .toast {
     transition: transform .6s ease-in-out;
-    animation: toast-in-right .5s;
+    animation: toast-in-right .7s;
 }
 
 @keyframes toast-in-right {

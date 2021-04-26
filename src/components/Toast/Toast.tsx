@@ -1,8 +1,9 @@
 import React from 'react'
+import Transition from '../Transition/Transition';
 
 import './toast.css'
 export interface ToastProps {
-    shown: boolean;
+    isShown: boolean;
     type: "info" | "success" | "error" | "warn"
     text: string;
     header: string;
@@ -22,18 +23,30 @@ export const Toast = (props: ToastProps) => {
             
             
     }
-    return (
-        <div className={`w-80 border-l-4 border-${color}-400 shadow-md rounded p-3 py-4 absolute top-0 right-0 mt-4 mr-4 toast ` + (props.shown ? '' :  'hidden')}>
-            <div className='flex'>
-                {props.type === 'info' && <Info />}
-                {props.type === 'error' && <Error />}
-                {props.type === 'warn' && <Warn />}
-                {props.type === 'success' && <Success />}
-                <div className='flex flex-col text-gray-700'>
-                    <h1 className='font-bold text-sm'>{props.header}</h1>
-                    <p className='text-xs'>{props.text}</p>
+    return ( 
+        <div>
+            <Transition
+                show={props.isShown}
+                enter="transition ease-out duration-500"
+                enterFrom="transform translate-x-full"
+                enterTo="transform translate-x-0"
+                leave="transition ease-in duration-400"
+                leaveFrom="transform translate-x-0"
+                leaveTo="transform translate-x-full"
+            >
+                <div className={`w-80 border-l-4 border-${color}-400 shadow-md rounded p-3 py-4 absolute top-0 right-0 mt-4 mr-4`}>
+                    <div className='flex'>
+                        {props.type === 'info' && <Info />}
+                        {props.type === 'error' && <Error />}
+                        {props.type === 'warn' && <Warn />}
+                        {props.type === 'success' && <Success />}
+                        <div className='flex flex-col text-gray-700'>
+                            <h1 className='font-bold text-sm'>{props.header}</h1>
+                            <p className='text-xs'>{props.text}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </Transition>
         </div>
     )
 }

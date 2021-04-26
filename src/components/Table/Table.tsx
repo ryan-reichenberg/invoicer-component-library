@@ -3,7 +3,6 @@ import { CellProps, Column, useTable } from 'react-table';
 
 interface ColumnData {
     name: string
-    className?: string
     cellRender?: (props: CellProps<{}, any>) => React.ReactElement
 
 }
@@ -21,7 +20,6 @@ export const Table: FC<TableProps> = (props) => {
                 let value: Column<{}> = {
                     Header: tableData.name,
                     accessor: tableData.name.toLowerCase().replace(' ', ''),
-                    className: tableData.className,
                     ...(tableData.cellRender && {Cell:(props) => tableData.cellRender!(props)})
                 }
                 headers.push(value)
