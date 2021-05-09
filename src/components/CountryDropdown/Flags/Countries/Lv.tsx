@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 function SvgLv(props: React.SVGProps<SVGSVGElement>) {
   return (
