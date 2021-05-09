@@ -10,8 +10,7 @@ export  class Stepper extends Component<StepperProps> {
         const steps = []
         for (let i = 0; i < this.props.maxSteps; i++) {
             steps.push(
-                <div>
-                    {/* active w-5 h-5 rounded-full */}
+                <div key={`step${i}`}>
                     <div className="mx-1">
                         { i+1 === this.props.activeStep ? (
                                 <div className="active bullet rounded-full flex justify-center items-center">
